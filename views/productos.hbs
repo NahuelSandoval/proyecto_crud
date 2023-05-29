@@ -23,7 +23,7 @@
                     <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center">
                         <div class="card m-4 col-4 text-center" style="width: 18rem">
                             <h2 class="card-title m-3">{{producto_nombre}}</h2>
-                            <img src="https://http2.mlstatic.com/D_NQ_NP_822658-MLA53619484067_022023-O.webp" class="card-img-top" alt="...">
+                            <img src="{{producto_imagen}}" class="card-img-top h-75" alt="{{producto_nombre}}">
                             <div class="card-body p-0">
                                 <h4 class="card-text">Producto N°: {{producto_id}}</h4>
                                 <h4 class="card-text">Precio: {{producto_precio}}</h4>
@@ -31,6 +31,7 @@
                                 <a href="javascript:void(0);" class="btn btn-primary h-25 fs-5 w-100 edit" data-bs-toggle="modal"
                                     data-bs-target="#EditModal" data-bs-whatever="@mdo" data-id="{{ producto_id }}"
                                     data-producto_nombre="{{producto_nombre}}"
+                                    data-producto_imagen="{{producto_imagen}}"
                                     data-producto_precio="{{producto_precio}}"
                                     data-producto_stock="{{producto_stock}}">Editar</a>
                                 <a href="javascript:void(0);" class="btn btn-danger h-25 fs-5 w-100 delete" data-bs-toggle="modal"
@@ -70,6 +71,10 @@
                             <input type="number" name="producto_stock" class="form-control mb-3"
                                 placeholder="Cantidad disponible">
                         </div>
+                        <div class="form-group">
+                            <input type="text" name="producto_imagen" class="form-control mb-3"
+                                placeholder="Url de la imagen del producto" required>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
@@ -103,6 +108,10 @@
                         <div class="form-group">
                             <input type="number" name="producto_stock" class="form-control mb-3 producto_stock"
                                 placeholder="Cantidad disponible">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="producto_imagen" class="form-control mb-3 producto_imagen"
+                                placeholder="Url de la imagen del producto" required>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -147,10 +156,12 @@
             $('#mycard').on('click', '.edit', function () {
                 let producto_id = $(this).data('id');
                 let producto_nombre = $(this).data('producto_nombre');
+                let producto_imagen = $(this).data('producto_imagen');
                 let producto_precio = $(this).data('producto_precio');
                 let producto_stock = $(this).data("producto_stock");
                 $('#EditModal').modal('show');
                 $('.producto_nombre').val(producto_nombre);
+                $('.producto_imagen').val(producto_imagen);
                 $('.producto_precio').val(producto_precio);
                 $('.producto_stock').val(producto_stock);
                 $('.producto_id').val(producto_id);
