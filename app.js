@@ -1,16 +1,16 @@
 const express = require("express");
 const app = express();
 const hbs = require("hbs");
-/* const router = require("./router/formulario")
- */
+const router = require("./router/formulario")
+
 
 const port = 3000;
 
 //HANDLEBARS
 
 app.set("view engine", "hbs");
-hbs.registerPartials(__dirname + "/views/partials")
-
+/* hbs.registerPartials(__dirname + "/views/partials")
+ */
 //MIDDLEWARE
 //para ver por que el assets, mirar la clase 15, hora 1
 app.use("/assets", express.static(__dirname + "/public"));
@@ -18,6 +18,8 @@ app.use(express.urlencoded({extended: false}));
 
 /* app.set("views", __dirname + "/views") */
 app.use(require("./router/router"));
+
+app.use("/", router);
 //Configurar directorio de archivos estaticos
 
 /* app.use(express.static(__dirname + "/public"));

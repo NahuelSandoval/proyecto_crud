@@ -3,7 +3,7 @@ const nodemailer = require("nodemailer");
 
 const router = express.Router();
 
-router.get("/", (req, res)=>{
+router.get("/formu", (req, res)=>{
     res.render("formulario")
 })
 
@@ -23,8 +23,8 @@ const transporter = nodemailer.createTransport({
     host: 'smtp.ethereal.email',
     port: 587,
     auth: {
-        user: 'max58@ethereal.email',
-        pass: 'hCtt8MGB5rH4kBX1Ze'
+        user: 'cordia.walker24@ethereal.email',
+        pass: 'WYtBhyxmnE24twXZgS'
     }
 });
 
@@ -32,7 +32,7 @@ const transporter = nodemailer.createTransport({
 
 const mailOptions = {
     from: email,
-    to: "destinatario@gmail.com",
+    to: "nahuelfacundo24@gmail.com",
     subject:"Formulario de contacto",
     text:  `
     Nombre: ${nombre} /n 
